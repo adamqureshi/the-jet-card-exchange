@@ -1,0 +1,413 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>The Jet Card Exchange | Fly Swift Tail</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Buy, sell, or swap private jet card hours and fractional time with transparency and protection. The Jet Card Exchange by Fly Swift Tail.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✈️</text></svg>">
+  <meta property="og:title" content="The Jet Card Exchange | Fly Swift Tail">
+  <meta property="og:description" content="Unlock liquidity, price certainty, and protection for private jet hours. A marketplace for jet card and fractional time.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://flyswifttail.com/the-jet-card-exchange">
+  <style>
+    :root{
+      --bg:#0b1020;
+      --panel:#121932;
+      --brand:#6de2ff;
+      --accent:#7bffb7;
+      --text:#ecf2ff;
+      --muted:#a8b3c7;
+      --danger:#ff6b6b;
+      --ok:#33d69f;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius:16px;
+      --radius-sm:10px;
+      --maxw:1120px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+      color:var(--text);
+      background: radial-gradient(1200px 800px at 10% -20%, #1a254b, transparent), 
+                  radial-gradient(800px 500px at 110% 10%, #09203f, transparent),
+                  var(--bg);
+      line-height:1.6;
+    }
+    a{color:var(--brand); text-decoration:none}
+    a:hover{text-decoration:underline}
+    header.nav{
+      position:sticky; top:0; z-index:20;
+      backdrop-filter: blur(8px);
+      background: rgba(10, 16, 32, .65);
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    .nav-inner{max-width:var(--maxw); margin:auto; display:flex; align-items:center; gap:24px; padding:12px 20px;}
+    .logo{font-weight:800; letter-spacing:.5px}
+    .logo span{color:var(--brand)}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      border-radius:999px; padding:12px 18px; font-weight:700;
+      color:#081224; background:linear-gradient(180deg, var(--accent), #47e2a2);
+      box-shadow:var(--shadow); border:none; cursor:pointer;
+    }
+    .btn.secondary{background:linear-gradient(180deg,#93b1ff,#6de2ff); color:#071322}
+    .btn.link{background:transparent; color:var(--brand); padding:8px 0; box-shadow:none}
+    .hero{
+      max-width:var(--maxw); margin: 36px auto; padding: 24px 20px;
+      display:grid; grid-template-columns: 1.25fr 1fr; gap: 28px;
+    }
+    .card{
+      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+    }
+    .hero .copy{padding:32px}
+    .eyebrow{font-size:.9rem; letter-spacing:.12em; text-transform:uppercase; color:var(--accent); font-weight:800}
+    h1{font-size: clamp(2rem, 3.5vw, 3.2rem); line-height:1.15; margin:.35em 0}
+    .lead{font-size: clamp(1.05rem, 1.5vw, 1.25rem); color:var(--muted)}
+    .hero-visual{position:relative; overflow:hidden}
+    .hero-visual:before{
+      content:""; position:absolute; inset:0;
+      background: radial-gradient(400px 250px at 30% 20%, rgba(109,226,255,.25), transparent),
+                  radial-gradient(500px 320px at 80% 80%, rgba(123,255,183,.2), transparent);
+      pointer-events:none;
+    }
+    .hero-visual img{display:block; width:100%; height:100%; object-fit:cover; border-radius:var(--radius)}
+    .pills{margin:18px 0 8px; display:flex; flex-wrap:wrap; gap:10px}
+    .pill{background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.12); color:var(--text); padding:6px 10px; border-radius:999px; font-size:.92rem}
+    .section{max-width:var(--maxw); margin:60px auto; padding: 0 20px}
+    h2{font-size: clamp(1.6rem, 2.4vw, 2.2rem); line-height:1.15; margin:.15em 0 .45em 0}
+    .grid{display:grid; gap:18px}
+    .grid.cols-3{grid-template-columns: repeat(3, 1fr)}
+    .grid.cols-2{grid-template-columns: 1fr 1fr}
+    .panel{padding:24px; border-radius:var(--radius); background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02)); border:1px solid rgba(255,255,255,.08)}
+    .panel h3{margin-top:0}
+    .kpis{display:grid; grid-template-columns: repeat(4, 1fr); gap:14px}
+    .kpi{padding:18px; text-align:center; border-radius:var(--radius-sm); background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.08)}
+    .kpi strong{display:block; font-size:1.35rem}
+    .table{width:100%; border-collapse: collapse; font-size:.98rem}
+    .table th, .table td{padding:12px 10px; border-bottom:1px dashed rgba(255,255,255,.12); vertical-align:top}
+    .table th{color:var(--muted); text-align:left; font-weight:700}
+    .badge{display:inline-block; font-size:.78rem; padding:.35rem .6rem; border-radius:999px; background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.15)}
+    .cta{display:grid; grid-template-columns: 1.2fr 1fr; gap:24px; align-items:stretch}
+    form{display:grid; gap:12px}
+    label{font-weight:700; font-size:.95rem}
+    input, select, textarea{
+      width:100%; border-radius:12px; border:1px solid rgba(255,255,255,.16);
+      background: rgba(10,16,32,.6); color:var(--text); padding:12px 14px; outline:none;
+    }
+    input:focus, select:focus, textarea:focus{border-color:var(--brand); box-shadow:0 0 0 3px rgba(109,226,255,.2)}
+    .help{color:var(--muted); font-size:.9rem}
+    .legal{color:var(--muted); font-size:.8rem}
+    footer{max-width:var(--maxw); margin:60px auto 24px; padding:0 20px; color:var(--muted)}
+    .disclaimer{border-left:4px solid rgba(255,255,255,.18); padding-left:14px}
+    @media (max-width: 920px){
+      .hero{grid-template-columns: 1fr; gap:18px}
+      .grid.cols-3{grid-template-columns: 1fr}
+      .grid.cols-2{grid-template-columns: 1fr}
+      .cta{grid-template-columns: 1fr}
+      .kpis{grid-template-columns: repeat(2, 1fr)}
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Service",
+    "name":"The Jet Card Exchange",
+    "provider":{"@type":"Organization","name":"Fly Swift Tail","url":"https://flyswifttail.com"},
+    "serviceType":"Private aviation marketplace",
+    "areaServed":"Global",
+    "url":"https://flyswifttail.com/the-jet-card-exchange",
+    "description":"Marketplace to buy, sell, or swap private jet card hours and fractional time with transparency and protection."
+  }
+  </script>
+</head>
+<body>
+  <header class="nav">
+    <div class="nav-inner">
+      <div class="logo">FLY<span>SWIFT</span>TAIL</div>
+      <div style="flex:1"></div>
+      <a class="btn secondary" href="#form">I'm interested</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="card copy">
+        <div class="eyebrow">Introducing</div>
+        <h1>The Jet Card Exchange</h1>
+        <p class="lead">Unlock liquidity, price certainty and transparency for private jet access. Buy, sell, or swap jet card hours and fractional time under a simple, standardized framework—powered by Fly Swift Tail.</p>
+        <div class="pills">
+          <span class="pill">Verified issuers & programs</span>
+          <span class="pill">Escrow‑protected settlement</span>
+          <span class="pill">AI contract scan</span>
+          <span class="pill">Group‑buy rates</span>
+        </div>
+        <div style="display:flex; gap:12px; margin-top:12px">
+          <a class="btn" href="#form">Get started</a>
+          <a class="btn link" href="#how">How it works</a>
+        </div>
+      </div>
+      <div class="hero-visual card">
+        <img src="private-jet-cards_mindmap_2025-11-06.png" alt="Mindmap of jet card related searches and topics">
+      </div>
+    </section>
+
+    <section id="benefits" class="section">
+      <h2>Benefits for Buyers</h2>
+      <div class="grid cols-3">
+        <div class="panel">
+          <h3>Liquidity without long lock‑ups</h3>
+          <p>Buy verified hours when you need them—or resell unused hours through the Exchange where issuer terms allow. No multi‑year commitments.</p>
+        </div>
+        <div class="panel">
+          <h3>Price certainty</h3>
+          <p>Know your rate before you book. Our standardized term sheets make peak‑day surcharges, de‑icing, fuel/CPI escalators, and taxi time crystal clear.</p>
+        </div>
+        <div class="panel">
+          <h3>Safety & service transparency</h3>
+          <p>Every listing shows operator certificate (e.g., Part 135/91K), ARG/US or Wyvern status where applicable, cabin class, age bands, recovery policy and call‑out rules.</p>
+        </div>
+        <div class="panel">
+          <h3>Escrow and dispute support</h3>
+          <p>Funds sit in escrow until terms are met. If service differs from the listing, our resolution desk steps in and we make you whole per the policy.</p>
+        </div>
+        <div class="panel">
+          <h3>AI contract scan</h3>
+          <p>Upload your current card or fractional agreement. We extract key clauses—blackouts, interchange fees, transferability, expiration—and flag risks in minutes.</p>
+        </div>
+        <div class="panel">
+          <h3>Group‑buy leverage</h3>
+          <p>Join a <em>Project Jet Buyers</em> cohort. We aggregate hours and tender to multiple issuers to win capped rates, improved peak‑day policies, and waived fees.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="how" class="section">
+      <h2>How the Exchange Works</h2>
+      <div class="grid cols-3">
+        <div class="panel">
+          <span class="badge">1. List or Request</span>
+          <p>Sellers list unused hours (subject to issuer transfer rules). Buyers request hours by cabin class, service area, and call‑out needs.</p>
+        </div>
+        <div class="panel">
+          <span class="badge">2. Verify & Lock</span>
+          <p>We KYC both sides, verify program status with the issuer, and lock terms in a standardized schedule. Buyer funds move to escrow.</p>
+        </div>
+        <div class="panel">
+          <span class="badge">3. Fly or Settle</span>
+          <p>Hours are applied to trips as you fly, or settled pro‑rata at the agreed rate. Unused balances may be re‑listed subject to terms.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="compare" class="section">
+      <h2>Jet Cards vs Fractional Ownership</h2>
+      <div class="panel">
+        <table class="table">
+          <thead>
+            <tr><th>Dimension</th><th>Jet Card (prepaid access)</th><th>Fractional Ownership (equity share)</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>What you buy</td>
+              <td>Blocks of hours or a deposit with guaranteed or capped hourly rates and availability windows.</td>
+              <td>Equity in a specific fleet program (e.g., 1/16–1/4 share) that converts to a contracted number of annual hours.</td>
+            </tr>
+            <tr>
+              <td>Up‑front outlay</td>
+              <td>Typically low‑ to mid‑six figures depending on cabin and hours.</td>
+              <td>High six to multi‑million depending on share size and cabin class, plus closing costs.</td>
+            </tr>
+            <tr>
+              <td>Ongoing fees</td>
+              <td>Hourly rate + surcharges (fuel/CPI, de‑icing, peak). No monthly management fee.</td>
+              <td>Monthly management fee + occupied hourly rate; owner responsible for share of maintenance/crew via program.</td>
+            </tr>
+            <tr>
+              <td>Term</td>
+              <td>Months to a couple of years; some cards have expiry dates.</td>
+              <td>3–5+ years typical with defined remarketing/buy‑back terms.</td>
+            </tr>
+            <tr>
+              <td>Accounting</td>
+              <td>Prepaid flight credit is usually a current asset (prepaid expense), expensed as flown.</td>
+              <td>Capital asset on the balance sheet; potential residual value risk (and remarketing fees) at exit.</td>
+            </tr>
+            <tr>
+              <td>Best for</td>
+              <td>25–75 hours/year, flexibility across cabin classes, minimal admin.</td>
+              <td>80–200+ hours/year with predictable patterns and willingness to commit capital for guaranteed access.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="help">We support both individuals and corporations. Program design, tax treatment and controls (e.g., department codes, traveler policies) can be tailored in onboarding.</p>
+    </section>
+
+    <section id="risks" class="section">
+      <h2>Buyer Risks & FST Protections</h2>
+      <div class="grid cols-2">
+        <div class="panel">
+          <h3>Counterparty risk</h3>
+          <p><strong>Risk:</strong> Issuer financial stress or operational downtime can impair service or refunds.<br><strong>FST:</strong> Escrow, multi‑issuer backup options, and a <em>continuity rider</em> that lets you elect a substitute provider at a pre‑agreed rate if service is unavailable.</p>
+        </div>
+        <div class="panel">
+          <h3>Blackouts & call‑out limits</h3>
+          <p><strong>Risk:</strong> Holiday blackouts and long call‑outs reduce utility.<br><strong>FST:</strong> Side‑by‑side disclosure of peak calendars and guaranteed call‑outs; optional premium to secure shorter call‑outs.</p>
+        </div>
+        <div class="panel">
+          <h3>Surcharges & “gotchas”</h3>
+          <p><strong>Risk:</strong> Fuel/CPI escalators, de‑icing, taxi time minimums, FBO change fees.<br><strong>FST:</strong> Unified rate card that computes true all‑in hourly and flags variances before you buy.</p>
+        </div>
+        <div class="panel">
+          <h3>Transfer restrictions</h3>
+          <p><strong>Risk:</strong> Many T&Cs limit assignment/resale.<br><strong>FST:</strong> Only list hours that issuers confirm as transferable; where not, we use issuer‑approved novation or “use-on-behalf” structures.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="market" class="section">
+      <h2>Market Snapshot & Major Players</h2>
+      <div class="kpis" role="list">
+        <div class="kpi" role="listitem"><strong>NetJets</strong><span class="help">Largest fractional fleet; continued growth.</span></div>
+        <div class="kpi" role="listitem"><strong>Flexjet</strong><span class="help">300+ aircraft globally (2024–25).</span></div>
+        <div class="kpi" role="listitem"><strong>Vista / XO</strong><span class="help">Membership & on‑demand network.</span></div>
+        <div class="kpi" role="listitem"><strong>Wheels Up</strong><span class="help">Delta‑backed membership & funds.</span></div>
+      </div>
+      <div class="panel" style="margin-top:14px">
+        <p class="help">Fractional operators have set records recently, with NetJets and Flexjet leading sector growth. Card and membership programs remain popular for 25–75 hour flyers, while fractional serves heavier users. (See resources & notes below.)</p>
+      </div>
+    </section>
+
+    <section id="form" class="section">
+      <h2>Tell me more</h2>
+      <div class="cta">
+        <div class="panel">
+          <form id="interestForm">
+            <div class="grid cols-2">
+              <div>
+                <label for="name">Full name</label>
+                <input id="name" name="name" required>
+              </div>
+              <div>
+                <label for="phone">Phone</label>
+                <input id="phone" name="phone" inputmode="tel" placeholder="+1 (___) ___‑____">
+              </div>
+            </div>
+            <div class="grid cols-2">
+              <div>
+                <label for="email">Email</label>
+                <input id="email" type="email" name="email" required placeholder="you@company.com">
+              </div>
+              <div>
+                <label for="location">Home airport / location</label>
+                <input id="location" name="location" placeholder="e.g., TEB, VNY, LAS">
+              </div>
+            </div>
+            <div class="grid cols-2">
+              <div>
+                <label for="product">What do you have?</label>
+                <select id="product" name="product">
+                  <option value="jet_card">I have a Jet Card</option>
+                  <option value="fractional">I have Fractional</option>
+                  <option value="shopping">I'm shopping</option>
+                </select>
+              </div>
+              <div>
+                <label for="issuer">Issuer / program</label>
+                <input id="issuer" name="issuer" placeholder="NetJets, Flexjet, Vista/XO, Wheels Up, etc.">
+              </div>
+            </div>
+            <div>
+              <label for="hours">Estimated annual hours</label>
+              <select id="hours" name="hours">
+                <option value="under25">Under 25</option>
+                <option value="25-50">25–50</option>
+                <option value="50-75">50–75</option>
+                <option value="75-100">75–100</option>
+                <option value="100plus">100+</option>
+              </select>
+            </div>
+            <div>
+              <label for="message">Anything else we should know?</label>
+              <textarea id="message" name="message" rows="4" placeholder="Peak days, preferred cabin, international needs, current pain points…"></textarea>
+            </div>
+            <div>
+              <label for="contract">Upload your contract (PDF or image)</label>
+              <input id="contract" name="contract" type="file" accept=".pdf,.png,.jpg,.jpeg,.heic">
+              <p class="help">On a static page we can’t transmit files. After you click <em>Email my request</em>, please attach your contract to the email that opens.</p>
+            </div>
+            <div style="display:flex; gap:10px; flex-wrap:wrap">
+              <button type="button" class="btn" onclick="mailtoLead()">Email my request</button>
+              <button type="button" class="btn secondary" onclick="downloadJSON()">Download as JSON</button>
+            </div>
+            <p class="legal">By submitting, you agree to be contacted by Fly Swift Tail and to our standard program terms.</p>
+          </form>
+        </div>
+        <div class="panel">
+          <h3>What happens next?</h3>
+          <ol>
+            <li><strong>We review your needs.</strong> If you’ve attached a contract, our AI scan highlights key terms and risks within one business day.</li>
+            <li><strong>We present options.</strong> Buy hours, resell hours (where permitted), or join a group‑buy cohort.</li>
+            <li><strong>We onboard you.</strong> You’ll get a simple standardized schedule, an escrow link, and a dedicated support contact.</li>
+          </ol>
+          <p class="help">Prefer to email us directly? Send details and your agreement to <a href="mailto:exchange@flyswifttail.com?subject=Jet%20Card%20Exchange%20-%20Inquiry">exchange@flyswifttail.com</a>.</p>
+          <div class="disclaimer">
+            <p class="legal"><strong>Important:</strong> Many issuer T&Cs restrict transfers. The Exchange only lists hours verified as transferable or uses issuer‑approved structures. Nothing here is tax, legal, or investment advice.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p class="help">Slug: <code>/the-jet-card-exchange</code> • Title: <em>The Jet Card Exchange | Fly Swift Tail</em> • H1: <em>The Jet Card Exchange</em></p>
+    <p class="legal">© Fly Swift Tail. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function sanitize(s){return (s||'').toString().trim()}
+
+    function mailtoLead(){
+      const f = document.getElementById('interestForm');
+      const data = {
+        name: sanitize(f.name.value),
+        phone: sanitize(f.phone.value),
+        email: sanitize(f.email.value),
+        location: sanitize(f.location.value),
+        product: sanitize(f.product.value),
+        issuer: sanitize(f.issuer.value),
+        hours: sanitize(f.hours.value),
+        message: sanitize(f.message.value)
+      };
+      const body = encodeURIComponent(
+        `Name: ${data.name}\nEmail: ${data.email}\nPhone: ${data.phone}\nLocation: ${data.location}\nProduct: ${data.product}\nIssuer: ${data.issuer}\nHours: ${data.hours}\n\nNotes:\n${data.message}\n\n(Please attach your contract file to this email if applicable.)`
+      );
+      const subject = encodeURIComponent(`Jet Card Exchange inquiry — ${data.name}`);
+      window.location.href = `mailto:exchange@flyswifttail.com?subject=${subject}&body=${body}`;
+    }
+
+    function downloadJSON(){
+      const f = document.getElementById('interestForm');
+      const payload = {
+        name: f.name.value, phone: f.phone.value, email: f.email.value,
+        location: f.location.value, product: f.product.value, issuer: f.issuer.value,
+        hours: f.hours.value, message: f.message.value, ts: new Date().toISOString()
+      };
+      const blob = new Blob([JSON.stringify(payload, null, 2)], {type:'application/json'});
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'fst-jet-card-exchange-lead.json';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    }
+  </script>
+</body>
+</html>
